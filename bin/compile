@@ -8,6 +8,7 @@
 #     $ bin/compile <build-dir> <cache-dir> <env-path>
 
 # Fail fast and fail hard.
+echo "----------------- BEGIN -----------------"
 set -eo pipefail
 
 [ "$BUILDPACK_XTRACE" ] && set -o xtrace
@@ -16,12 +17,16 @@ set -eo pipefail
 export PATH=:/usr/local/bin:$PATH
 
 # Paths.
+echo "----------------- Paths -----------------"
 BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
 ROOT_DIR=$(dirname $BIN_DIR)
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
 
+echo "----------------- Paths end -----------------"
+
+echo "----------------- Check miniconda-----------------"
 # Use miniconda if environment.yml exists and exit
 if [ -f $BUILD_DIR/environment.yml ]; then
   echo "----------------- USING CONDA BUILDPACK -----------------"
@@ -29,6 +34,7 @@ if [ -f $BUILD_DIR/environment.yml ]; then
   exit 0
 fi
 
+echo "----------------- ROOT_DIR -----------------"
 $ROOT_DIR/compile-extensions/bin/check_stack_support
 
 # The ROOT_DIR is read only so we can't install dependencies in it
