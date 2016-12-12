@@ -111,23 +111,23 @@ TMP_APP_DIR=$CACHE_DIR/tmp_app_dir
 
 
 # Skip these steps for Docker.
-#if [[ ! "$SKIP_MOVE_BUILD" ]]; then
+if [[ ! "$SKIP_MOVE_BUILD" ]]; then
 
   # Copy Anvil app dir to temporary storage...
-#  bpwatch start anvil_appdir_stage
-#  if [ "$SLUG_ID" ]; then
-#    mkdir -m 777 -p $TMP_APP_DIR
-#    deep-mv $APP_DIR $TMP_APP_DIR
-#  else
-#    deep-rm $APP_DIR
-#  fi
-#  bpwatch stop anvil_appdir_stage
+  bpwatch start anvil_appdir_stage
+  if [ "$SLUG_ID" ]; then
+    sudo mkdir -m 777 -p $TMP_APP_DIR
+    deep-mv $APP_DIR $TMP_APP_DIR
+  else
+    deep-rm $APP_DIR
+  fi
+  bpwatch stop anvil_appdir_stage
 
   # Copy Application code in.
-#  bpwatch start appdir_stage
-#    deep-cp $BUILD_DIR $APP_DIR
-#  bpwatch stop appdir_stage
-#fi
+  bpwatch start appdir_stage
+    deep-cp $BUILD_DIR $APP_DIR
+  bpwatch stop appdir_stage
+fi
 
 
 # Set new context.
