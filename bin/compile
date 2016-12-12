@@ -54,14 +54,15 @@ function bpwatch() {
 BUILDPACK_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )"
 export BUILDPACK_PATH
 #source $BUILDPACK_PATH/compile-extensions/lib/common
-#source $BUILDPACK_PATH
+
 # END CF Common
 
 # Static configurations for virtualenv caches.
 VIRTUALENV_LOC=".heroku/venv"
 LEGACY_TRIGGER="lib/python2.7"
 
-DEFAULT_PYTHON_VERSION="python-$($BUILDPACK_PATH/compile-extensions/bin/default_version_for $BUILDPACK_PATH/manifest.yml python)"
+#DEFAULT_PYTHON_VERSION="python-$($BUILDPACK_PATH/compile-extensions/bin/default_version_for $BUILDPACK_PATH/manifest.yml python)"
+DEFAULT_PYTHON_VERSION=""
 PYTHON_EXE="/app/.heroku/python/bin/python"
 PIP_VERSION="8.1.2"
 SETUPTOOLS_VERSION="25.2.0"
