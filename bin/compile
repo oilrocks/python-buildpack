@@ -105,6 +105,7 @@ source $BIN_DIR/utils
 source $BIN_DIR/warnings
 
 # Directory Hacks for path consistency.
+echo "----------------- Are we there yet? -----------------"
 APP_DIR='/app'
 TMP_APP_DIR=$CACHE_DIR/tmp_app_dir
 
@@ -115,7 +116,7 @@ if [[ ! "$SKIP_MOVE_BUILD" ]]; then
   # Copy Anvil app dir to temporary storage...
   bpwatch start anvil_appdir_stage
   if [ "$SLUG_ID" ]; then
-    mkdir -p $TMP_APP_DIR
+    mkdir -m 777 -p $TMP_APP_DIR
     deep-mv $APP_DIR $TMP_APP_DIR
   else
     deep-rm $APP_DIR
