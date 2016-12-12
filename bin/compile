@@ -53,9 +53,8 @@ function bpwatch() {
 # CF Common
 BUILDPACK_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )"
 export BUILDPACK_PATH
-echo $BUILDPACK_PATH
 #source $BUILDPACK_PATH/compile-extensions/lib/common
-source $BUILDPACK_PATH
+#source $BUILDPACK_PATH
 # END CF Common
 
 # Static configurations for virtualenv caches.
